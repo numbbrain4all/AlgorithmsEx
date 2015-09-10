@@ -2,11 +2,6 @@ public class Solution {
     // be careful! A string can contain white characters
 
     public string Convert(string s, int numRows) {
-        int col = s.Length/numRows
-        // if row is even, requires (s/numRows)*
-        // if row is odd, 
-        
-        
         int numCols = DetermineCols(s, numRows);
         int[,] sbox = new int[numRows, numCols];
 
@@ -14,22 +9,19 @@ public class Solution {
         int cc = 0;
         
         for (int ch = 0;ch<s.Length;c++) {
-            if ()    
-            
-            
+            sbox[cr, cc] = s[ch];
+            // The first one is dense
+            if (cr % 2 == 0) // if even (starting from 0)
+                sbox[cr, cc+1] = s[++ch];
+            else // if odd
+                sbox[cr, cc] = s[ch];
         }
         
-        for (int c = 0;c<numCols-1;c++) {
-            for (int r = 0;r<numRows.Length-1;r++) {
-                
-                
-            }
-        
-        return Pack(sbox).ToString();
+        return Pack(sbox);
     }
     
     int DetermineCols(string s, int numRows) {
-        bool isEvenRow = numRows % 2 == 0;        
+        bool isEvenRow = numRows % 2 == 0;     
         
         int longRow = numRows/2;
         int shortRow = numRows/2;
@@ -47,7 +39,17 @@ public class Solution {
         int wh = shortRow * 
     }
     
-    char[] Pack(char[,] sbox) {
+    string Pack(char[,] sbox) {
+        var sb = new StringBuilder();
         
+        for (var c = 0; c<sbox[0].Length;c++){
+            for (var r = 0; r<sbox.Length;r++) {
+                if (r % 0 == 0 || c % 0 == 0) 
+                {
+                    sb.Append(sbox[r,c]);
+                }
+            }
+        }
+        return sb.ToString();
     }    
 }
